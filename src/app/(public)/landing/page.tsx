@@ -1,4 +1,3 @@
-// src/app/(public)/landing/page.tsx
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
@@ -16,19 +15,6 @@ import {
 import { FaWhatsapp, FaYoutube, FaGoogle } from 'react-icons/fa'
 
 // ========== TYPES ==========
-interface PricingPlan {
-  name: string
-  price: string
-  priceYearly: string
-  description: string
-  features: string[]
-  buttonText: string
-  buttonLink: string
-  isPopular?: boolean
-  gradient: string
-  badge?: string
-}
-
 interface FAQ {
   question: string
   answer: string
@@ -95,9 +81,6 @@ const FloatingParticles = () => {
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeTestimonial, setActiveTestimonial] = useState(0)
-  const [selectedPlan, setSelectedPlan] = useState<'monthly' | 'yearly'>('yearly')
-  const [showBuyModal, setShowBuyModal] = useState(false)
-  const [selectedBuyPlan, setSelectedBuyPlan] = useState<string | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: containerRef })
   const heroY = useTransform(scrollYProgress, [0, 0.5], [0, 200])
@@ -106,83 +89,28 @@ export default function LandingPage() {
   // ===== DATA =====
   const testimonials = [
     {
-      name: 'Tahira Kanaya',
-      role: 'Project Manager',
-      text: 'CMS sangat membantu kami mengelola konten proyek secara real-time. Admin panel intuitif dan mudah digunakan. Tim kami bisa fokus pada pekerjaan inti.',
-      avatar: '',
+      name: 'Ir. Budi Santoso, M.T.',
+      role: 'Project Manager, Kementerian PUPR',
+      text: 'LPPSLH CMS sangat membantu kami mengelola konten proyek secara real-time. Admin panel intuitif dan mudah digunakan.',
+      avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
       rating: 5,
-      company: 'Kementerian'
+      company: 'Kementerian PUPR'
     },
     {
-      name: 'Naufalyn',
-      role: 'Direktur Operasional',
-      text: 'Kami menggunakan platform ini untuk memantau puluhan proyek. Dashboard real-time dan laporan otomatis sangat berguna. Efisiensi tim meningkat 40%.',
-      avatar: '',
+      name: 'Dr. Siti Nurhaliza, M.Sc.',
+      role: 'Direktur Operasional, PT Waskita Karya',
+      text: 'Kami menggunakan platform ini untuk memantau puluhan proyek. Dashboard real-time dan laporan otomatis sangat berguna.',
+      avatar: 'https://randomuser.me/api/portraits/women/68.jpg',
       rating: 5,
-      company: 'PT'
+      company: 'PT Waskita Karya'
     },
     {
-      name: 'Rahadin Arguby',
-      role: 'CEO',
-      text: 'Digitalisasi proyek kami meningkat drastis setelah menggunakan Lp CMS. Tim lapangan dan kantor terhubung mulus. Sangat direkomendasikan!',
-      avatar: '',
+      name: 'Andi Wijaya, S.T., M.B.A.',
+      role: 'CEO, PT Hutama Karya',
+      text: 'Digitalisasi proyek kami meningkat drastis setelah menggunakan LPPSLH CMS. Tim lapangan dan kantor terhubung mulus.',
+      avatar: 'https://randomuser.me/api/portraits/men/75.jpg',
       rating: 5,
-      company: 'PT Hutama'
-    }
-  ]
-
-  const pricingPlans: PricingPlan[] = [
-    {
-      name: 'Basic',
-      price: 'Rp 5.000.000',
-      priceYearly: 'Rp 35.000.000',
-      description: 'Cocok untuk perusahaan kecil yang baru memulai digitalisasi.',
-      features: [
-        'Source code lengkap',
-        'Database Supabase',
-        '1 Domain',
-        'Dokumentasi dasar',
-        'Email support 1 bulan'
-      ],
-      buttonText: 'Beli Sekarang',
-      buttonLink: '#buy',
-      gradient: 'from-blue-500 to-cyan-500'
-    },
-    {
-      name: 'Standard',
-      price: 'Rp 8.000.000',
-      priceYearly: 'Rp 62.000.000',
-      description: 'Paling populer untuk bisnis menengah dengan kebutuhan lengkap.',
-      features: [
-        'Semua fitur Basic',
-        'Video tutorial',
-        'Dokumentasi lengkap',
-        '1 Tahun support',
-        'Training 1 hari online',
-        'Custom branding'
-      ],
-      isPopular: true,
-      badge: '🔥 Paling Populer',
-      buttonText: 'Beli Sekarang',
-      buttonLink: '#buy',
-      gradient: 'from-purple-500 to-pink-500'
-    },
-    {
-      name: 'Premium',
-      price: 'Rp 12.000.000',
-      priceYearly: 'Rp 108.000.000',
-      description: 'Solusi komprehensif untuk perusahaan besar dan instansi pemerintah.',
-      features: [
-        'Semua fitur Standard',
-        'Setup deployment',
-        'Pelatihan 1 hari on-site',
-        '2 Tahun support',
-        'Custom development 40 jam',
-        'SLA 99.9% uptime'
-      ],
-      buttonText: 'Hubungi Kami',
-      buttonLink: '/contact',
-      gradient: 'from-amber-500 to-orange-500'
+      company: 'PT Hutama Karya'
     }
   ]
 
@@ -239,7 +167,7 @@ export default function LandingPage() {
     },
     {
       question: 'Bagaimana cara deploy website ini?',
-      answer: 'Kami menyediakan dokumentasi lengkap langkah demi langkah. Anda juga bisa menggunakan jasa setup deployment kami (tersedia di paket Premium).'
+      answer: 'Kami menyediakan dokumentasi lengkap langkah demi langkah. Anda juga bisa menggunakan jasa setup deployment kami.'
     },
     {
       question: 'Apakah data saya aman?',
@@ -263,15 +191,6 @@ export default function LandingPage() {
     return () => clearInterval(interval)
   }, [testimonials.length])
 
-  useEffect(() => {
-    if (showBuyModal) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
-    return () => { document.body.style.overflow = 'unset' }
-  }, [showBuyModal])
-
   // ===== RENDER =====
   return (
     <div ref={containerRef} className="bg-white overflow-x-hidden">
@@ -282,15 +201,10 @@ export default function LandingPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
-            "name": "Lp CMS - Company Profile Pro",
+            "name": "LPPSLH CMS - Company Profile Pro",
             "description": "Platform manajemen konten website profesional berbasis Next.js + Supabase",
             "applicationCategory": "WebApplication",
             "operatingSystem": "All",
-            "offers": {
-              "@type": "Offer",
-              "price": "5000000",
-              "priceCurrency": "IDR"
-            }
           })
         }}
       />
@@ -304,23 +218,24 @@ export default function LandingPage() {
                 L
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-                Lp<span className="text-blue-600">CMS</span>
+                LPPSLH<span className="text-blue-600">CMS</span>
               </span>
             </Link>
 
             <nav className="hidden md:flex items-center gap-8">
               <a href="#features" className="text-gray-600 hover:text-gray-900 transition">Fitur</a>
               <a href="#demo" className="text-gray-600 hover:text-gray-900 transition">Demo</a>
-              <a href="#pricing" className="text-gray-600 hover:text-gray-900 transition">Harga</a>
               <a href="#testimonials" className="text-gray-600 hover:text-gray-900 transition">Testimoni</a>
               <a href="/admin" target="_blank" className="px-4 py-2 bg-gray-100 rounded-xl text-gray-700 hover:bg-gray-200 transition text-sm font-medium">
                 Admin Login
               </a>
               <a
-                href="#pricing"
+                href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20LPPSLH%20CMS"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-5 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:shadow-lg transition text-sm font-medium hover:-translate-y-0.5"
               >
-                Beli Sekarang
+                Konsultasi
               </a>
             </nav>
 
@@ -343,10 +258,9 @@ export default function LandingPage() {
             <nav className="flex flex-col items-center gap-6 text-lg">
               <a href="#features" onClick={() => setIsMenuOpen(false)} className="text-gray-700 hover:text-blue-600 transition">Fitur</a>
               <a href="#demo" onClick={() => setIsMenuOpen(false)} className="text-gray-700 hover:text-blue-600 transition">Demo</a>
-              <a href="#pricing" onClick={() => setIsMenuOpen(false)} className="text-gray-700 hover:text-blue-600 transition">Harga</a>
               <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className="text-gray-700 hover:text-blue-600 transition">Testimoni</a>
               <a href="/admin" target="_blank" className="w-full text-center px-4 py-3 bg-gray-100 rounded-xl text-gray-700">Admin Login</a>
-              <a href="#pricing" className="w-full text-center px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl">Beli Sekarang</a>
+              <a href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20LPPSLH%20CMS" target="_blank" rel="noopener noreferrer" className="w-full text-center px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl">Konsultasi</a>
             </nav>
           </motion.div>
         )}
@@ -362,7 +276,6 @@ export default function LandingPage() {
           style={{ y: heroY, scale: heroScale }}
           className="relative z-10 max-w-7xl mx-auto px-4 py-20 text-center"
         >
-          {/* Badge Social Proof */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -406,11 +319,13 @@ export default function LandingPage() {
             className="mt-10 flex flex-wrap justify-center gap-4"
           >
             <a
-              href="#pricing"
+              href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20LPPSLH%20CMS"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
             >
-              <FiShoppingCart className="group-hover:scale-110 transition" />
-              Beli Sekarang
+              <FaWhatsapp size={20} />
+              Konsultasi Sekarang
               <FiArrowRight className="group-hover:translate-x-1 transition" />
             </a>
             <a
@@ -421,13 +336,11 @@ export default function LandingPage() {
               Lihat Demo
             </a>
             <a
-              href="https://wa.me/6287733008821"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 border border-green-500 text-green-600 rounded-full font-semibold hover:bg-green-50 transition"
+              href="/demo"
+              className="inline-flex items-center gap-2 px-8 py-4 border border-gray-300 text-gray-700 rounded-full font-semibold hover:bg-gray-50 transition"
             >
-              <FaWhatsapp size={18} />
-              Konsultasi Gratis
+              <FiMonitor size={18} />
+              Coba Demo
             </a>
           </motion.div>
 
@@ -550,7 +463,7 @@ export default function LandingPage() {
               KENAPA KAMI
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-              4 Alasan Memilih Lp CMS
+              4 Alasan Memilih LPPSLH CMS
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -748,117 +661,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ===== PRICING ===== */}
-      <section id="pricing" className="py-24 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="inline-block px-4 py-1.5 text-sm font-medium text-indigo-600 bg-indigo-100 rounded-full mb-4">
-              PAKET HARGA
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-              Pilih Paket yang Sesuai
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mt-4 rounded-full" />
-            <p className="mt-4 text-gray-500 max-w-2xl mx-auto">
-              Pilih paket yang paling sesuai dengan kebutuhan bisnis Anda.
-              <span className="block text-sm text-green-600">💰 Hemat 25% dengan paket tahunan!</span>
-            </p>
-
-            {/* Toggle Monthly/Yearly */}
-            <div className="flex items-center justify-center gap-4 mt-8">
-              <span className={`text-sm font-medium ${selectedPlan === 'monthly' ? 'text-gray-900' : 'text-gray-400'}`}>
-                Bulanan
-              </span>
-              <button
-                onClick={() => setSelectedPlan(prev => prev === 'monthly' ? 'yearly' : 'monthly')}
-                className="w-14 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full p-1 transition shadow-md"
-              >
-                <motion.div
-                  className="w-6 h-6 bg-white rounded-full shadow-md"
-                  animate={{ x: selectedPlan === 'yearly' ? 24 : 0 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                />
-              </button>
-              <span className={`text-sm font-medium ${selectedPlan === 'yearly' ? 'text-gray-900' : 'text-gray-400'}`}>
-                Tahunan <span className="text-green-600 text-xs font-bold">(hemat 25%)</span>
-              </span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pricingPlans.map((plan, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                whileHover={{ y: -8 }}
-                className={`relative bg-white rounded-2xl p-8 shadow-lg border transition-all duration-300 ${
-                  plan.isPopular
-                    ? 'border-purple-500 shadow-xl ring-2 ring-purple-500/20'
-                    : 'border-gray-200 hover:shadow-xl'
-                }`}
-              >
-                {plan.isPopular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-semibold px-4 py-1 rounded-full shadow-lg">
-                    {plan.badge || 'Paling Populer'}
-                  </div>
-                )}
-
-                <div className="text-center mb-6">
-                  <h3 className="text-xl font-bold text-gray-900">{plan.name}</h3>
-                  <div className="mt-3">
-                    <span className="text-4xl font-bold text-gray-900">
-                      {selectedPlan === 'monthly' ? plan.price : plan.priceYearly}
-                    </span>
-                    <span className="text-gray-400 text-sm block">
-                      /{selectedPlan === 'monthly' ? 'bulan' : 'tahun'}
-                    </span>
-                  </div>
-                  <p className="text-sm text-gray-500 mt-2">{plan.description}</p>
-                </div>
-
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, fi) => (
-                    <li key={fi} className="flex items-start gap-3 text-gray-600 text-sm">
-                      <FiCheckCircle className="text-green-500 mt-0.5 flex-shrink-0" size={16} />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href={plan.buttonLink === '#buy' ? '#' : plan.buttonLink}
-                  onClick={(e) => {
-                    if (plan.buttonLink === '#buy') {
-                      e.preventDefault()
-                      setSelectedBuyPlan(plan.name)
-                      setShowBuyModal(true)
-                    }
-                  }}
-                  className={`block w-full text-center py-3 rounded-xl font-semibold transition ${
-                    plan.isPopular
-                      ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:shadow-lg hover:-translate-y-0.5'
-                      : 'bg-gray-900 text-white hover:bg-gray-800 hover:-translate-y-0.5'
-                  }`}
-                >
-                  {plan.buttonText}
-                </a>
-              </motion.div>
-            ))}
-          </div>
-
-          <p className="text-center text-xs text-gray-400 mt-8">
-            *Harga belum termasuk PPN. Support dan update 1 tahun.
-            <br />
-            💳 Pembayaran via transfer bank, QRIS, atau kartu kredit.
-          </p>
-        </div>
-      </section>
-
       {/* ===== FAQ ===== */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <span className="inline-block px-4 py-1.5 text-sm font-medium text-amber-600 bg-amber-100 rounded-full mb-4">
@@ -878,7 +682,7 @@ export default function LandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05 }}
-                className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition"
+                className="bg-gray-50 rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition"
               >
                 <h3 className="font-bold text-gray-800 mb-2">{faq.question}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{faq.answer}</p>
@@ -888,7 +692,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ===== CTA FINAL ===== */}
+      {/* ===== CTA FINAL (Tanpa Harga) ===== */}
       <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-900">
         <div className="absolute inset-0 bg-grid opacity-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-blue-600/10 to-purple-600/10" />
@@ -910,21 +714,14 @@ export default function LandingPage() {
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <a
-                href="#pricing"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-semibold hover:shadow-xl transition hover:-translate-y-1"
-              >
-                <FiShoppingCart size={18} />
-                Beli Sekarang
-                <FiArrowRight className="group-hover:translate-x-1 transition" />
-              </a>
-              <a
-                href="https://wa.me/6287733008821"
+                href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20LPPSLH%20CMS"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 border border-white/30 backdrop-blur-sm rounded-full font-semibold hover:bg-white/10 transition"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-semibold hover:shadow-xl transition hover:-translate-y-1"
               >
-                <FaWhatsapp size={18} />
-                Konsultasi Gratis
+                <FaWhatsapp size={20} />
+                Konsultasi Sekarang
+                <FiArrowRight className="group-hover:translate-x-1 transition" />
               </a>
               <a
                 href="/demo"
@@ -947,7 +744,7 @@ export default function LandingPage() {
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
                   L
                 </div>
-                <span className="font-bold text-gray-800">Lp CMS</span>
+                <span className="font-bold text-gray-800">LPPSLH CMS</span>
               </div>
               <p className="text-sm text-gray-500 max-w-xs">
                 Solusi manajemen konten website profesional berbasis Next.js + Supabase.
@@ -970,17 +767,16 @@ export default function LandingPage() {
               <ul className="space-y-2 text-sm text-gray-500">
                 <li><a href="#features" className="hover:text-blue-600 transition">Fitur</a></li>
                 <li><a href="#demo" className="hover:text-blue-600 transition">Demo</a></li>
-                <li><a href="#pricing" className="hover:text-blue-600 transition">Harga</a></li>
                 <li><a href="#testimonials" className="hover:text-blue-600 transition">Testimoni</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold text-gray-800 mb-3">Kontak</h4>
               <ul className="space-y-2 text-sm text-gray-500">
-                <li className="flex items-center gap-2"><FiMail size={14} className="text-blue-500" />rahadin06@gmail.com</li>
-                <li className="flex items-center gap-2"><FiPhone size={14} className="text-green-500" /> (024) 1234567</li>
-                <li className="flex items-center gap-2"><FaWhatsapp size={14} className="text-green-600" /> 0877-3300-8821</li>
-                <li className="flex items-center gap-2"><FiMapPin size={14} className="text-red-500" /> Brebes, Indonesia</li>
+                <li className="flex items-center gap-2"><FiMail size={14} className="text-blue-500" /> info@lppslh.com</li>
+                <li className="flex items-center gap-2"><FiPhone size={14} className="text-green-500" /> (024) 7472581</li>
+                <li className="flex items-center gap-2"><FaWhatsapp size={14} className="text-green-600" /> 0812-3456-7890</li>
+                <li className="flex items-center gap-2"><FiMapPin size={14} className="text-red-500" /> Semarang, Indonesia</li>
               </ul>
             </div>
             <div>
@@ -994,7 +790,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="border-t border-gray-100 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-gray-400">© 2025 LpCMS. All rights reserved. Built with ❤️ using Next.js</p>
+            <p className="text-xs text-gray-400">© 2025 LPPSLH CMS. All rights reserved. Built with ❤️ using Next.js</p>
             <div className="flex gap-4 text-xs text-gray-400">
               <a href="#" className="hover:text-gray-600 transition">Privacy Policy</a>
               <a href="#" className="hover:text-gray-600 transition">Terms of Service</a>
@@ -1011,86 +807,22 @@ export default function LandingPage() {
       >
         <div className="flex gap-3">
           <a
-            href="#pricing"
-            className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-semibold text-center text-sm hover:shadow-lg transition"
-          >
-            Beli Sekarang
-          </a>
-          <a
-            href="https://wa.me/6287733008821"
+            href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20LPPSLH%20CMS"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 bg-green-500 text-white py-3 rounded-xl font-semibold text-center text-sm flex items-center justify-center gap-2"
+            className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-semibold text-center text-sm hover:shadow-lg transition flex items-center justify-center gap-2"
           >
             <FaWhatsapp size={18} />
-            WA
+            Konsultasi
+          </a>
+          <a
+            href="/demo"
+            className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold text-center text-sm hover:bg-gray-300 transition"
+          >
+            Demo
           </a>
         </div>
       </motion.div>
-
-      {/* ===== BUY MODAL ===== */}
-      <AnimatePresence>
-        {showBuyModal && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
-            onClick={() => setShowBuyModal(false)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, y: 30 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 30 }}
-              className="bg-white rounded-2xl max-w-md w-full p-8 shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
-                  <FiShoppingCart size={30} className="text-green-600" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">Siap Memesan?</h3>
-                <p className="text-gray-500 mt-2">
-                  Anda memilih paket <strong>{selectedBuyPlan || 'Standard'}</strong>
-                </p>
-                <p className="text-sm text-gray-400 mt-1">
-                  {selectedPlan === 'monthly' 
-                    ? pricingPlans.find(p => p.name === selectedBuyPlan)?.price 
-                    : pricingPlans.find(p => p.name === selectedBuyPlan)?.priceYearly}
-                  /{selectedPlan === 'monthly' ? 'bulan' : 'tahun'}
-                </p>
-
-                <div className="mt-6 space-y-3 text-left">
-                  <p className="text-sm font-medium text-gray-700">📋 Langkah Selanjutnya:</p>
-                  <ol className="text-sm text-gray-500 space-y-2 list-decimal pl-5">
-                    <li>Klik tombol di bawah untuk menghubungi kami</li>
-                    <li>Konfirmasi paket dan metode pembayaran</li>
-                    <li>Dapatkan akses source code dalam 1x24 jam</li>
-                  </ol>
-                </div>
-
-                <div className="mt-6 flex flex-col gap-3">
-                  <a
-                    href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20membeli%20paket%20Lp%20CMS%20-%20{{selectedBuyPlan}}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full bg-green-500 text-white py-3 rounded-xl font-semibold hover:bg-green-600 transition flex items-center justify-center gap-2"
-                  >
-                    <FaWhatsapp size={20} />
-                    Pesan via WhatsApp
-                  </a>
-                  <button
-                    onClick={() => setShowBuyModal(false)}
-                    className="w-full text-gray-500 py-2 text-sm hover:text-gray-700 transition"
-                  >
-                    Tutup
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       <style jsx>{`
         .bg-grid {
