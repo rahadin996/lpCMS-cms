@@ -1,12 +1,30 @@
 // src/app/api/check-projects/route.ts
-import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
+import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
 
+// Paksa dynamic rendering (karena pakai cookies)
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
-  const supabase = createRouteHandlerClient({ cookies })
-  
   try {
+    const cookieStore = await cookies()
+    
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          getAll() {
+            return cookieStore.getAll()
+          },
+          setAll() {
+            // GET request tidak perlu set cookie
+          },
+        },
+      }
+    )
+    
     // Ambil semua proyek
     const { data: projects, error: projectsError } = await supabase
       .from('project_porto')

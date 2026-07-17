@@ -1,8 +1,9 @@
 // src/app/admin/gallery/page.tsx
 'use client'
 
-import { useState, useEffect } from 'react'
+import { Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import AdminSectionNav from '@/components/admin/AdminSectionNav'
 import MultiImageUpload from '@/components/admin/MultiImageUpload'
@@ -43,11 +44,11 @@ const CATEGORIES = ['Acara', 'Pelatihan', 'Proyek', 'Kerjasama', 'Penghargaan']
 const NAV_ITEMS = [
   { key: 'list', label: '📸 Daftar Galeri' },
   { key: 'create', label: '➕ Tambah Baru' },
-  { key: 'edit', label: '✏️ Edit Galeri' }, // akan muncul saat edit
+  { key: 'edit', label: '✏️ Edit Galeri' },
 ]
 
-// ========== MAIN COMPONENT ==========
-export default function AdminGalleryPage() {
+// ========== COMPONENT YANG PAKAI useSearchParams ==========
+function GalleryContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const supabase = createClient()
@@ -187,14 +188,12 @@ export default function AdminGalleryPage() {
     try {
       let error
       if (editId) {
-        // UPDATE
         const { error: e } = await supabase
           .from('gallery')
           .update(payload)
           .eq('id', editId)
         error = e
       } else {
-        // INSERT
         const { error: e } = await supabase.from('gallery').insert(payload)
         error = e
       }
@@ -206,10 +205,8 @@ export default function AdminGalleryPage() {
         type: 'success'
       })
 
-      // Reset form
       resetForm()
       fetchData()
-      // Kembali ke daftar setelah 1.5 detik
       setTimeout(() => {
         setActiveSection('list')
         setEditId(null)
@@ -285,7 +282,7 @@ export default function AdminGalleryPage() {
         {items.length === 0 ? (
           <div className="text-center py-16 bg-gray-50 rounded-xl border border-dashed border-gray-300">
             <p className="text-gray-400 text-lg">Belum ada data galeri.</p>
-            <p className="text-gray-400 text-sm mt-1">Klik tombol &quot;Tambah Baru&quot; untuk memulai.</p>
+            <p className="text-gray-400 text-sm mt-1">Klik tombol "Tambah Baru" untuk memulai.</p>
           </div>
         ) : (
           <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
@@ -493,10 +490,7 @@ export default function AdminGalleryPage() {
   return (
     <div className="flex gap-6">
       <AdminSectionNav
-        items={NAV_ITEMS.filter(item => {
-          // Sembunyikan 'edit' dari sidebar, hanya muncul via tombol
-          return item.key !== 'edit'
-        })}
+        items={NAV_ITEMS.filter(item => item.key !== 'edit')}
         activeKey={activeSection === 'edit' ? 'create' : activeSection}
         onSelect={(key) => {
           if (key === 'create') {
@@ -524,5 +518,18 @@ export default function AdminGalleryPage() {
         {renderSection()}
       </div>
     </div>
+  )
+}
+
+// ========== MAIN PAGE (dengan Suspense) ==========
+export default function AdminGalleryPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center h-64">
+        <FiLoader className="animate-spin text-blue-600" size={32} />
+      </div>
+    }>
+      <GalleryContent />
+    </Suspense>
   )
 }
