@@ -92,6 +92,7 @@ const GRADIENT_OPTIONS = [
 
 const generateId = () => crypto.randomUUID()
 
+// ===== DEFAULT DATA =====
 const DEFAULT_STATS: StatItem[] = [
   { id: generateId(), icon: 'FiClock', value: '24/7', label: 'Layanan Konsultasi', color: 'from-blue-500 to-cyan-500' },
   { id: generateId(), icon: 'FiMapPin', value: '2', label: 'Lokasi Strategis', color: 'from-purple-500 to-pink-500' },
@@ -490,7 +491,6 @@ export default function AdminOfficesPage() {
     setShowOfficeModal(true)
   }
 
-  // Fungsi untuk menambahkan URL galeri dari upload
   const handleGalleryUpload = (url: string) => {
     if (url) {
       const current = galleryInput ? galleryInput.split('\n').filter(Boolean) : []
