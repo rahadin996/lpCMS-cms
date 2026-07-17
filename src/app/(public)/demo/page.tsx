@@ -21,9 +21,9 @@ export default function DemoPage() {
   const [copiedAll, setCopiedAll] = useState(false)
 
   const demoCredentials = {
-  email: 'demo@admin.com',
-  password: 'admin123'
-}
+    email: 'demo@admin.com',
+    password: 'admin123'
+  }
 
   const copyToClipboard = (text: string, type: string) => {
     navigator.clipboard.writeText(text)
@@ -201,7 +201,7 @@ export default function DemoPage() {
             </div>
           </motion.div>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Tanpa tombol "Beli Sekarang" */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -227,10 +227,12 @@ export default function DemoPage() {
               <FiExternalLink size={16} />
             </a>
             <a
-              href="/landing#pricing"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-amber-500/20 text-amber-400 rounded-full font-semibold border border-amber-500/30 hover:bg-amber-500/30 transition"
+              href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20LPPSLH%20CMS%20setelah%20melihat%20demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transition"
             >
-              💰 Beli Sekarang
+              <FaWhatsapp size={20} /> Konsultasi
             </a>
           </motion.div>
 
@@ -407,32 +409,32 @@ export default function DemoPage() {
         </div>
       </section>
 
-      {/* ===== CTA FINAL ===== */}
+      {/* ===== CTA FINAL - Tanpa Harga ===== */}
       <section className="py-20 px-4 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-blue-600/10 to-purple-600/10" />
         <div className="absolute inset-0 bg-grid opacity-5" />
         <div className="relative z-10 max-w-2xl mx-auto bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-2xl p-8 border border-blue-500/20 backdrop-blur-sm">
-          <h3 className="text-2xl md:text-3xl font-bold text-white">Siap Punya Website Seperti Ini?</h3>
+          <h3 className="text-2xl md:text-3xl font-bold text-white">Tertarik Punya Website Seperti Ini?</h3>
           <p className="text-gray-300 mt-2">Dapatkan source code lengkap dengan admin panel. Kelola konten sendiri, tanpa coding!</p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <a
-              href="/landing#pricing"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium hover:shadow-lg transition hover:-translate-y-0.5"
-            >
-              Lihat Harga & Paket
-              <FiArrowRight size={16} />
-            </a>
             <a
               href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20LPPSLH%20CMS%20setelah%20mencoba%20demo"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-xl font-medium hover:bg-green-700 transition"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-xl font-medium hover:bg-green-700 transition hover:-translate-y-0.5"
             >
               <FaWhatsapp size={18} /> Konsultasi Gratis
             </a>
+            <a
+              href="/"
+              target="_blank"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-white/30 text-white rounded-xl font-medium hover:bg-white/10 transition"
+            >
+              <FiMonitor size={18} /> Lihat Demo Website
+            </a>
           </div>
           <p className="text-xs text-gray-500 mt-4">
-            💳 Pembayaran via transfer bank, QRIS, atau kartu kredit
+            💬 Tanyakan semua kebutuhan Anda via WhatsApp
           </p>
         </div>
       </section>
