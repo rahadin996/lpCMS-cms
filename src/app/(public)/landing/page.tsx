@@ -1,18 +1,18 @@
+// src/app/(public)/landing/page.tsx
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import {
-  FiCheckCircle, FiArrowRight, FiStar, FiBriefcase, FiUsers, FiGlobe,
+  FiCheckCircle, FiArrowRight, FiStar, FiUsers, FiGlobe,
   FiLayout, FiDatabase, FiSettings, FiShield, FiZap, FiAward,
   FiChevronDown, FiX, FiMenu, FiMonitor, FiSmartphone, FiCode,
   FiCloud, FiLock, FiTrendingUp, FiMessageSquare, FiPlay,
-  FiExternalLink, FiGithub, FiMail, FiPhone, FiMapPin, FiCheck,
-  FiHeart, FiThumbsUp, FiClock, FiHeadphones, FiShoppingCart
+  FiExternalLink, FiMail, FiPhone, FiMapPin, FiCheck,
+  FiHeart, FiThumbsUp, FiClock, FiHeadphones
 } from 'react-icons/fi'
-import { FaWhatsapp, FaYoutube, FaGoogle } from 'react-icons/fa'
+import { FaWhatsapp } from 'react-icons/fa'
 
 // ========== TYPES ==========
 interface FAQ {
@@ -89,28 +89,28 @@ export default function LandingPage() {
   // ===== DATA =====
   const testimonials = [
     {
-      name: 'Ir. Budi Santoso, M.T.',
-      role: 'Project Manager, Kementerian PUPR',
-      text: 'LPPSLH CMS sangat membantu kami mengelola konten proyek secara real-time. Admin panel intuitif dan mudah digunakan.',
-      avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+      name: 'Tahira Kanaya',
+      role: 'Project Manager',
+      text: 'Lp CMS sangat membantu kami mengelola konten proyek secara real-time. Admin panel intuitif dan mudah digunakan. Tim kami bisa fokus pada pekerjaan inti.',
+      avatar: '',
       rating: 5,
-      company: 'Kementerian PUPR'
+      company: 'Kementerian'
     },
     {
-      name: 'Dr. Siti Nurhaliza, M.Sc.',
-      role: 'Direktur Operasional, PT Waskita Karya',
-      text: 'Kami menggunakan platform ini untuk memantau puluhan proyek. Dashboard real-time dan laporan otomatis sangat berguna.',
-      avatar: 'https://randomuser.me/api/portraits/women/68.jpg',
+      name: 'Naufalyn',
+      role: 'Direktur Operasional',
+      text: 'Kami menggunakan platform ini untuk memantau puluhan proyek. Dashboard real-time dan laporan otomatis sangat berguna. Efisiensi tim meningkat 40%.',
+      avatar: '',
       rating: 5,
-      company: 'PT Waskita Karya'
+      company: 'PT'
     },
     {
-      name: 'Andi Wijaya, S.T., M.B.A.',
-      role: 'CEO, PT Hutama Karya',
-      text: 'Digitalisasi proyek kami meningkat drastis setelah menggunakan LPPSLH CMS. Tim lapangan dan kantor terhubung mulus.',
-      avatar: 'https://randomuser.me/api/portraits/men/75.jpg',
+      name: 'Rahadin Arguby',
+      role: 'CEO',
+      text: 'Digitalisasi proyek kami meningkat drastis setelah menggunakan Lp CMS. Tim lapangan dan kantor terhubung mulus. Sangat direkomendasikan!',
+      avatar: '',
       rating: 5,
-      company: 'PT Hutama Karya'
+      company: 'PT Hutama'
     }
   ]
 
@@ -201,7 +201,7 @@ export default function LandingPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
-            "name": "LPPSLH CMS - Company Profile Pro",
+            "name": "Lp CMS - Company Profile Pro",
             "description": "Platform manajemen konten website profesional berbasis Next.js + Supabase",
             "applicationCategory": "WebApplication",
             "operatingSystem": "All",
@@ -218,7 +218,7 @@ export default function LandingPage() {
                 L
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-                LPPSLH<span className="text-blue-600">CMS</span>
+                Lp<span className="text-blue-600">CMS</span>
               </span>
             </Link>
 
@@ -230,7 +230,7 @@ export default function LandingPage() {
                 Admin Login
               </a>
               <a
-                href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20LPPSLH%20CMS"
+                href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20Lp%20CMS"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-5 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:shadow-lg transition text-sm font-medium hover:-translate-y-0.5"
@@ -260,7 +260,7 @@ export default function LandingPage() {
               <a href="#demo" onClick={() => setIsMenuOpen(false)} className="text-gray-700 hover:text-blue-600 transition">Demo</a>
               <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className="text-gray-700 hover:text-blue-600 transition">Testimoni</a>
               <a href="/admin" target="_blank" className="w-full text-center px-4 py-3 bg-gray-100 rounded-xl text-gray-700">Admin Login</a>
-              <a href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20LPPSLH%20CMS" target="_blank" rel="noopener noreferrer" className="w-full text-center px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl">Konsultasi</a>
+              <a href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20Lp%20CMS" target="_blank" rel="noopener noreferrer" className="w-full text-center px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl">Konsultasi</a>
             </nav>
           </motion.div>
         )}
@@ -319,7 +319,7 @@ export default function LandingPage() {
             className="mt-10 flex flex-wrap justify-center gap-4"
           >
             <a
-              href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20LPPSLH%20CMS"
+              href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20Lp%20CMS"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
@@ -344,7 +344,6 @@ export default function LandingPage() {
             </a>
           </motion.div>
 
-          {/* Trust Stats */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -463,7 +462,7 @@ export default function LandingPage() {
               KENAPA KAMI
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-              4 Alasan Memilih LPPSLH CMS
+              4 Alasan Memilih Lp CMS
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -513,7 +512,6 @@ export default function LandingPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Screenshot / Mockup Admin Panel */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -557,7 +555,6 @@ export default function LandingPage() {
               </div>
             </motion.div>
 
-            {/* Teks Demo */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -628,11 +625,9 @@ export default function LandingPage() {
                 className="bg-white rounded-2xl p-8 md:p-12 shadow-xl border border-gray-100"
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <img
-                    src={testimonials[activeTestimonial].avatar}
-                    alt={testimonials[activeTestimonial].name}
-                    className="w-16 h-16 rounded-full object-cover border-2 border-blue-100"
-                  />
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white text-xl font-bold">
+                    {testimonials[activeTestimonial].name.charAt(0)}
+                  </div>
                   <div className="text-left">
                     <h4 className="font-bold text-gray-900 text-lg">{testimonials[activeTestimonial].name}</h4>
                     <p className="text-sm text-gray-500">{testimonials[activeTestimonial].role}</p>
@@ -692,7 +687,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ===== CTA FINAL (Tanpa Harga) ===== */}
+      {/* ===== CTA FINAL ===== */}
       <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-900">
         <div className="absolute inset-0 bg-grid opacity-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-blue-600/10 to-purple-600/10" />
@@ -714,7 +709,7 @@ export default function LandingPage() {
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <a
-                href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20LPPSLH%20CMS"
+                href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20Lp%20CMS"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-semibold hover:shadow-xl transition hover:-translate-y-1"
@@ -744,7 +739,7 @@ export default function LandingPage() {
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
                   L
                 </div>
-                <span className="font-bold text-gray-800">LPPSLH CMS</span>
+                <span className="font-bold text-gray-800">Lp CMS</span>
               </div>
               <p className="text-sm text-gray-500 max-w-xs">
                 Solusi manajemen konten website profesional berbasis Next.js + Supabase.
@@ -773,10 +768,10 @@ export default function LandingPage() {
             <div>
               <h4 className="font-semibold text-gray-800 mb-3">Kontak</h4>
               <ul className="space-y-2 text-sm text-gray-500">
-                <li className="flex items-center gap-2"><FiMail size={14} className="text-blue-500" /> info@lppslh.com</li>
-                <li className="flex items-center gap-2"><FiPhone size={14} className="text-green-500" /> (024) 7472581</li>
-                <li className="flex items-center gap-2"><FaWhatsapp size={14} className="text-green-600" /> 0812-3456-7890</li>
-                <li className="flex items-center gap-2"><FiMapPin size={14} className="text-red-500" /> Semarang, Indonesia</li>
+                <li className="flex items-center gap-2"><FiMail size={14} className="text-blue-500" /> rahadin06@gmail.com</li>
+                <li className="flex items-center gap-2"><FiPhone size={14} className="text-green-500" /> (024) 1234567</li>
+                <li className="flex items-center gap-2"><FaWhatsapp size={14} className="text-green-600" /> 0877-3300-8821</li>
+                <li className="flex items-center gap-2"><FiMapPin size={14} className="text-red-500" /> Brebes, Indonesia</li>
               </ul>
             </div>
             <div>
@@ -790,7 +785,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="border-t border-gray-100 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-gray-400">© 2025 LPPSLH CMS. All rights reserved. Built with ❤️ using Next.js</p>
+            <p className="text-xs text-gray-400">© 2025 LpCMS. All rights reserved. Built with ❤️ using Next.js</p>
             <div className="flex gap-4 text-xs text-gray-400">
               <a href="#" className="hover:text-gray-600 transition">Privacy Policy</a>
               <a href="#" className="hover:text-gray-600 transition">Terms of Service</a>
@@ -807,7 +802,7 @@ export default function LandingPage() {
       >
         <div className="flex gap-3">
           <a
-            href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20LPPSLH%20CMS"
+            href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20Lp%20CMS"
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-semibold text-center text-sm hover:shadow-lg transition flex items-center justify-center gap-2"

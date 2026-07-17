@@ -64,8 +64,8 @@ export default function DemoPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            "name": "LPPSLH CMS Demo",
-            "description": "Demo interaktif admin panel LPPSLH CMS",
+            "name": "Lp CMS Demo",
+            "description": "Demo interaktif admin panel Lp CMS",
             "applicationCategory": "WebApplication",
             "operatingSystem": "All",
             "browserRequirements": "Modern browser",
@@ -81,7 +81,7 @@ export default function DemoPage() {
               <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
                 L
               </div>
-              <span className="text-white font-bold">LPPSLH<span className="text-blue-400">CMS</span></span>
+              <span className="text-white font-bold">Lp<span className="text-blue-400">CMS</span></span>
               <span className="text-xs bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full border border-blue-500/20">
                 Demo
               </span>
@@ -96,7 +96,7 @@ export default function DemoPage() {
                 <FiSettings size={16} /> Buka Admin
               </a>
               <a
-                href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20LPPSLH%20CMS%20setelah%20melihat%20demo"
+                href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20Lp%20CMS%20setelah%20melihat%20demo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden md:inline-flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-xl text-sm font-medium hover:bg-green-700 transition"
@@ -129,7 +129,7 @@ export default function DemoPage() {
             Coba Langsung
             <br />
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Admin Panel LPPSLH CMS
+              Admin Panel Lp CMS
             </span>
           </h1>
 
@@ -227,7 +227,7 @@ export default function DemoPage() {
               <FiExternalLink size={16} />
             </a>
             <a
-              href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20LPPSLH%20CMS%20setelah%20melihat%20demo"
+              href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20Lp%20CMS%20setelah%20melihat%20demo"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transition"
@@ -418,7 +418,7 @@ export default function DemoPage() {
           <p className="text-gray-300 mt-2">Dapatkan source code lengkap dengan admin panel. Kelola konten sendiri, tanpa coding!</p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
             <a
-              href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20LPPSLH%20CMS%20setelah%20mencoba%20demo"
+              href="https://wa.me/6287733008821?text=Halo%2C%20saya%20tertarik%20dengan%20Lp%20CMS%20setelah%20mencoba%20demo"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-xl font-medium hover:bg-green-700 transition hover:-translate-y-0.5"
